@@ -6,7 +6,7 @@
 #define MyAppName "Athernos Server Manager"
 #define MyAppPublisher "Md Ismail Alam Khan"
 #define MyAppURL "https://github.com/IsmailAlamKhan/athernos_server_manger_client"
-#define MyAppExeName "athernos-server-manager.exe"
+#define MyAppExeName "athernos_server_manger_client.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
