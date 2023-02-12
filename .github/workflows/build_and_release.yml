@@ -48,7 +48,7 @@ jobs:
     with:
       release-upload-url: ${{ needs.create-release.outputs.release }}
       app-name: "athernos-server-manager"
-      version: ${{ github.ref }}
+      # version: ${{ github.ref }}
   # build-linux:
   #   needs: [create-release]
   #   uses: ./.github/workflows/build_linux.yml
