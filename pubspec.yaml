@@ -1,7 +1,7 @@
 name: athernos_server_manger_client
 description: Manage your athernos server from your phone or desktop without the need of the athernos website
 publish_to: none
-version: 0.0.2
+version: 0.0.1
 
 environment:
   sdk: '>=2.19.0 <3.0.0'
