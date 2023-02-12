@@ -6,6 +6,7 @@ import 'app/features/features.dart';
 import 'app/utils/logger.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final container = ProviderContainer();
   NavigatorService.init();
   AppLogger.init();
