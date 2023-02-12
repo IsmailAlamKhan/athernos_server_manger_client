@@ -1,0 +1,51 @@
+name: Build Android
+on:
+  workflow_call:
+    inputs:
+      release-upload-url:
+        description: "Release upload URL"
+        required: true
+        type: string
+      app-name:
+        description: "Application name"
+        required: true
+        type: string
+        default: "DMD"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      APPNAME: ${{ inputs.app-name }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2.4.0
+
+      - name: Build apk
+        run: flutter build apk
+
+      - name: Build appbundle
+        run: flutter build appbundle
+
+      - name: upload apk to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ inputs.release-upload-url }}
+          asset_path: build/app/outputs/flutter-apk/app-release.apk
+          asset_name: app-release.apk
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: upload appbundle to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ inputs.release-upload-url }}
+          asset_path: build/app/outputs/bundle/release/app-release.aab
+          asset_name: app-release.aab
+          asset_content_type: application/x-authorware-bin
